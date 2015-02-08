@@ -36,14 +36,22 @@
     for (var i = 0; i < balls.length; i++) {
       $(balls[i]).bind('click', function (e) {
         $('#itmbtn').html(e.currentTarget.innerHTML);
+        renderLuckyMan(parseInt(e.currentTarget.innerHTML));
         $('#itm-balls').hide();
       })
-      //console.log(balls[i]);
     }
   }
 
   function Lucky() {
     this.oriArr = ['张三', '李四', '王五', '陈六', '李七', '吴八']
+  }
+
+  function renderLuckyMan(num){
+    var arr = [];
+    for(var i = 0;i<num;i++){
+      arr.push('<li class="lkman">XXX</li>');
+    }
+    $('#lkwrap').html(arr.join(''));
   }
 
   /**

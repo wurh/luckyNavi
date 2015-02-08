@@ -20,7 +20,14 @@ body {
     color: #333;
 }
 
+.lkman{
+    display: block;
+    -webkit-box-flex: 1;
+    -webkit-box-sizing: border-box;
+}
+
 .txt{
+    display: -webkit-box;
     width: 100%;
     margin-top: 150px;
     font-size: 30px;
