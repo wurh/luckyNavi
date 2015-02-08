@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    line-height: 22px;
+    font-size: 12px;
+    font-family: arial,"\5B8B\4F53";
+    color: #666;
+    background:url(../img/bg_login.jpg) left top no-repeat;
+    -webkit-text-size-adjust: none;
+    background-size: 100% auto;
+}
+
+.lkct{
+    display: -webkit-box;
+    -webkit-box-pack: justify;
+    margin-top: 100px;
+    height: 300px;
+    background-color: rgba(255,255,255,.5);
+    text-align: center;
+    font-size: 30px;
+    color: #333;
+}
+
+.txt{
+    width: 100%;
+    margin-top: 150px;
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+}
+
+.btg{
+    display: -webkit-box;
+    margin-top: 200px;
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+}
+
+#st:hover,#cl:hover,.itms:hover,.itm-balls li:hover{
+    background-color: indianred;
+}
+
+.indianred {
+    background-color: indianred !important;
+}
+
+.bt{
+    -webkit-box-flex: 1;
+    -webkit-box-sizing: border-box;
+    padding: 0 100px;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    line-height: 41px;
+    font-size: 15px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255,255,255,.25);
+}
+
+.btg span{
+    width: 100%;
+    display: block;
+    background-color: rgba(0,0,0,.3);
+    color: #ffffff;
+}
+
+.itms{
+    width: 40px;
+    height:  40px;
+    -webkit-border-radius: 50%;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    left: 20px;
+    text-align: center;
+    line-height: 40px;
+    color: #ffffff;
+}
+
+.itm-balls{
+    margin: 0;
+    width: 40px;
+    height: 360px;
+    padding: 0;
+    position: absolute;
+    top: 200px;
+    left: 20px;
+}
+
+.itm-balls li{
+    display: block;
+    width: 40px;
+    height:  40px;
+    -webkit-border-radius: 50%;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    line-height: 40px;
+    color: #ffffff;
+    margin-top: 20px;
+}
