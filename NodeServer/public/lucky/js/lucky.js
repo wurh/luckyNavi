@@ -60,8 +60,12 @@
   Lucky.prototype.roll = function () {
     var _me = this;
     _me.timer = setInterval(function () {
-      var i = parseInt(Math.random() * (_me.oriArr.length - 1))
-      $('#lktxt').text(_me.oriArr[i]);
+      var lms = $('.lkman');
+      for(var j = 0 ; j< lms.length; j++){
+        var i = parseInt(Math.random() * (_me.oriArr.length - 1));
+        $(lms[j]).text(_me.oriArr[i]);
+      }
+      //$('#lktxt').text(_me.oriArr[i]);
     }, 100);
   }
 
