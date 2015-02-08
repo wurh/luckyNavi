@@ -3,6 +3,8 @@
   var lucky,
     luckyTime = 1, //中奖个数
     startTimes = 0, //开始次数
+    isStop = true,
+    isStart = false,
     narr,
     garr,
     aarr;
@@ -66,6 +68,12 @@
 
     //开始按钮事件
     $('#st').bind('click', function () {
+      if(!isStart){
+        isStart = true;
+        isStop = false;
+      }else{
+        return;
+      }
       aarr = initAarr();
       if(aarr.length === 0){
         alert('抽奖活动已结束！');
@@ -86,6 +94,12 @@
 
     //结束按钮事件
     $('#cl').bind('click', function () {
+      if(!isStop){
+        isStop = true;
+        isStart = false;
+      }else{
+        return;
+      }
       aarr = initAarr();
       if(aarr.length === 0){
         alert('抽奖活动已结束！');
