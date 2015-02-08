@@ -2,7 +2,7 @@
 <head>
     <title>谁是卧底游戏-后台</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="UC 大导航抽奖中心">
+    <meta name="description" content="谁是卧底游戏-后台">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="lib/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 
@@ -15,6 +15,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="lib/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
     <link rel="stylesheet" type="text/css" href="css/admin.css">
 </head>
 <body>
@@ -23,14 +24,26 @@
     <div class="content-header">谁是卧底控制台</div>
     <form>
         <div class="form-group">
-            <label for="exampleInputEmail1">参与人数</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="参与人数">
+            <label for="jnum">参与人数</label>
+            <input type="text" class="form-control" id="jnum" placeholder="参与人数">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">参与人员</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="参与人员">
+            <label for="jperson">参与人员</label>
+            <input type="text" class="form-control" id="jperson" placeholder="参与人员">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <div class="form-group">
+            <label for="farmer">平民纸牌</label>
+            <input type="text" class="form-control" id="farmer" placeholder="平民纸牌">
+        </div>
+        <div class="form-group">
+            <label for="spider">卧底纸牌</label>
+            <input type="text" class="form-control" id="spider" placeholder="卧底纸牌">
+        </div>
+        <div class="form-group">
+            <label for="spider">卧底是:</label>
+            <div id="spiderNum">X</div>
+        </div>
+        <div id="stgame" class="btn btn-default">开始游戏</div>
     </form>
 </div>
 </body>
