@@ -1,12 +1,63 @@
 (function () {
   'use strict';
-  var lucky;
-  var luckyTime = 1; //中奖个数
+  var lucky,
+    luckyTime = 1, //中奖个数
+    startTimes = 0, //开始次数
+    narr,
+    garr,
+    aarr;
+
+  /**
+   * 页面JS开始执行
+   */
   $(document).ready(function () {
+    if (!localStorage.getItem('narr')) {
+      narr = memberLists.narr;
+      localStorage.setItem('narr', narr);
+    }
+    if (!localStorage.getItem('garr')) {
+      garr = memberLists.garr;
+      localStorage.setItem('garr', garr);
+    }
     lucky = new Lucky();
     bindEvent();
-    //lucky.roll();
   });
+
+
+  function getAllarr(narr, garr) {
+    var arr = [];
+    for (var i = 0; i < narr.length; i++) {
+      if(narr[i] === ''){
+        break;
+      }
+      arr.push(narr[i]);
+    }
+    for (var j = 0; j < garr.length; j++) {
+      if(garr[i] === ''){
+        break;
+      }
+      arr.push(garr[j]);
+    }
+    for (var k = 0; k < narr.length; k++) {
+      if(narr[i] === ''){
+        break;
+      }
+      arr.push(narr[k]);
+    }
+    return arr;
+  }
+
+  /**
+   * 渲染抽奖人数
+   * @param num
+   */
+  function renderLuckyMan(num) {
+    var arr = [];
+    for (var i = 0; i < num; i++) {
+      arr.push('<li class="lkman">XXX</li>');
+    }
+    $('#lkwrap').html(arr.join(''));
+  }
 
   /**
    * 绑定按钮事件
@@ -15,13 +66,35 @@
 
     //开始按钮事件
     $('#st').bind('click', function () {
-      $('#st').addClass('indianred');
-      $('#cl').removeClass('indianred');
-      lucky.roll();
+      aarr = initAarr();
+      if(aarr.length === 0){
+        alert('抽奖活动已结束！');
+        $('#st').removeClass('indianred');
+        $('#cl').removeClass('indianred');
+        return;
+      }
+      if (aarr.length > luckyTime) {
+        startTimes++;
+        $('#st').addClass('indianred');
+        $('#cl').removeClass('indianred');
+        lucky.roll();
+      } else {
+        alert('没有足够的人满足剩下的奖品！');
+        $('#st').removeClass('indianred');
+      }
     });
 
     //结束按钮事件
     $('#cl').bind('click', function () {
+      aarr = initAarr();
+      if(aarr.length === 0){
+        alert('抽奖活动已结束！');
+        $('#st').removeClass('indianred');
+        $('#cl').removeClass('indianred');
+      }
+      if(luckyTime > aarr.length){
+        return;
+      }
       $('#cl').addClass('indianred');
       $('#st').removeClass('indianred');
       lucky.stopRoll();
@@ -37,21 +110,55 @@
       $(balls[i]).bind('click', function (e) {
         $('#itmbtn').html(e.currentTarget.innerHTML);
         renderLuckyMan(parseInt(e.currentTarget.innerHTML));
+        luckyTime = e.currentTarget.innerHTML;
         $('#itm-balls').hide();
       })
     }
   }
 
-  function Lucky() {
-    this.oriArr = ['张三', '李四', '王五', '陈六', '李七', '吴八']
+  function getLuckyGuys(num) {
+    var luckyTeam = [];
+    for (var i = 0; i < num; i++) {
+      var luckyOne = aarr[parseInt(Math.random() * (aarr.length - 1))];
+      luckyTeam.push(luckyOne);
+      if (narr.indexOf(luckyOne) > -1) {
+        narr.splice($.inArray(luckyOne, narr), 1);
+        localStorage.setItem('narr', narr);
+      }
+      if (garr.indexOf(luckyOne) > -1) {
+        garr.splice($.inArray(luckyOne, garr), 1);
+        localStorage.setItem('garr', garr);
+      }
+      aarr = getAllarr(narr, garr);
+    }
+    localStorage.setItem('luckyteam_' + startTimes, luckyTeam.join('-'));
+    setLuckyTeam(luckyTeam);
   }
 
-  function renderLuckyMan(num){
-    var arr = [];
-    for(var i = 0;i<num;i++){
-      arr.push('<li class="lkman">XXX</li>');
+  /**
+   * 设置中奖名单到页面
+   * @param arr
+   */
+  function setLuckyTeam(arr) {
+    var lms = $('.lkman');
+    for (var j = 0; j < lms.length; j++) {
+      $(lms[j]).text(arr[j]);
     }
-    $('#lkwrap').html(arr.join(''));
+  }
+
+  function initAarr() {
+    narr = localStorage.getItem('narr').split(',');
+    garr = localStorage.getItem('garr').split(',');
+    aarr = getAllarr(narr, garr);
+    return aarr;
+  }
+
+  /**
+   * 幸运儿对象
+   * @constructor
+   */
+  function Lucky() {
+
   }
 
   /**
@@ -61,9 +168,9 @@
     var _me = this;
     _me.timer = setInterval(function () {
       var lms = $('.lkman');
-      for(var j = 0 ; j< lms.length; j++){
-        var i = parseInt(Math.random() * (_me.oriArr.length - 1));
-        $(lms[j]).text(_me.oriArr[i]);
+      for (var j = 0; j < lms.length; j++) {
+        var i = parseInt(Math.random() * (aarr.length - 1));
+        $(lms[j]).text(aarr[i]);
       }
       //$('#lktxt').text(_me.oriArr[i]);
     }, 100);
@@ -74,5 +181,7 @@
     if (_me && _me.timer) {
       clearInterval(_me.timer);
     }
+    getLuckyGuys(luckyTime);
   }
+
 })();
