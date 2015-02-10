@@ -19,11 +19,13 @@
           if (localStorage.getItem('spiderNum') == (i + 1)) {
             perArr.push({
               name: arr[i],
+              role:'spider',
               card: localStorage.getItem('spider') || ''
             });
           } else {
             perArr.push({
               name: arr[i],
+              role:'farmer',
               card: localStorage.getItem('farmer') || ''
             });
           }
@@ -53,8 +55,8 @@
     var arr = [];
     for (var i = 0; i < parr.length; i++) {
       arr.push('<li>');
-      arr.push('<div>' + parr[i].name + '</div>');
-      arr.push('<div>' + parr[i].card + '</div>');
+      arr.push('<div class="name-'+parr[i].role+'">' + parr[i].name + '</div>');
+      arr.push('<div class="card-'+parr[i].role+'">' + parr[i].card + '</div>');
       arr.push('</li>');
     }
     $('#cards').html(arr.join(''));
