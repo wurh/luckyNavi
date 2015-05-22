@@ -17,16 +17,16 @@
       narr = memberLists.narr;
       localStorage.setItem('narr', narr);
     }
-    if (!localStorage.getItem('garr')) {
-      garr = memberLists.garr;
-      localStorage.setItem('garr', garr);
-    }
+//    if (!localStorage.getItem('garr')) {
+//      garr = memberLists.garr;
+//      localStorage.setItem('garr', garr);
+//    }
     lucky = new Lucky();
     bindEvent();
   });
 
 
-  function getAllarr(narr, garr) {
+  function getAllarr(narr) {
     var arr = [];
     for (var i = 0; i < narr.length; i++) {
       if(narr[i] === ''){
@@ -34,18 +34,18 @@
       }
       arr.push(narr[i]);
     }
-    for (var j = 0; j < garr.length; j++) {
-      if(garr[i] === ''){
-        break;
-      }
-      arr.push(garr[j]);
-    }
-    for (var k = 0; k < narr.length; k++) {
-      if(narr[i] === ''){
-        break;
-      }
-      arr.push(narr[k]);
-    }
+//    for (var j = 0; j < garr.length; j++) {
+//      if(garr[i] === ''){
+//        break;
+//      }
+//      arr.push(garr[j]);
+//    }
+//    for (var k = 0; k < narr.length; k++) {
+//      if(narr[i] === ''){
+//        break;
+//      }
+//      arr.push(narr[k]);
+//    }
     return arr;
   }
 
@@ -139,10 +139,10 @@
         narr.splice($.inArray(luckyOne, narr), 1);
         localStorage.setItem('narr', narr);
       }
-      if (garr.indexOf(luckyOne) > -1) {
-        garr.splice($.inArray(luckyOne, garr), 1);
-        localStorage.setItem('garr', garr);
-      }
+//      if (garr.indexOf(luckyOne) > -1) {
+//        garr.splice($.inArray(luckyOne, garr), 1);
+//        localStorage.setItem('garr', garr);
+//      }
       aarr = getAllarr(narr, garr);
     }
     localStorage.setItem('luckyteam_' + startTimes, luckyTeam.join('-'));
@@ -162,8 +162,8 @@
 
   function initAarr() {
     narr = localStorage.getItem('narr').split(',');
-    garr = localStorage.getItem('garr').split(',');
-    aarr = getAllarr(narr, garr);
+   // garr = localStorage.getItem('garr').split(',');
+    aarr = getAllarr(narr);
     return aarr;
   }
 
