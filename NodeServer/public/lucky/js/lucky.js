@@ -51,22 +51,22 @@
 
 
     function resultRender() {
-        var team5 = localStorage.getItem('narr').split(',');
+        var team2 = localStorage.getItem('narr').split(',');
         var team1 = localStorage.getItem('luckyteam_1').split('-');
-        var team2 = localStorage.getItem('luckyteam_2').split('-');
-        var team3 = localStorage.getItem('luckyteam_3').split('-');
-        var team4 = localStorage.getItem('luckyteam_4').split('-');
+//        var team2 = localStorage.getItem('luckyteam_2').split('-');
+//        var team3 = localStorage.getItem('luckyteam_3').split('-');
+//        var team4 = localStorage.getItem('luckyteam_4').split('-');
         var team1Str = renderTeam(team1,'A Team:').join('');
-        var team2Str = renderTeam(team2,'B Team:').join('');
-        var team3Str = renderTeam(team3,'C Team:').join('');
-        var team4Str = renderTeam(team4,'D Team:').join('');
-        var team5Str = renderTeam(team5,'E Team:').join('');
+//        var team2Str = renderTeam(team2,'B Team:').join('');
+//        var team3Str = renderTeam(team3,'C Team:').join('');
+//        var team4Str = renderTeam(team4,'D Team:').join('');
+        var team2Str = renderTeam(team2,'E Team:').join('');
         $('body').html('');
         $('body').append(team1Str);
         $('body').append(team2Str);
-        $('body').append(team3Str);
-        $('body').append(team4Str);
-        $('body').append(team5Str);
+//        $('body').append(team3Str);
+//        $('body').append(team4Str);
+//        $('body').append(team5Str);
        // $('#lkwrap').html('');
 //        $('#lkwrap').append(team1Str);
 //        $('#lkwrap').append(team2Str);
